@@ -20,9 +20,9 @@ jobs:
         with:
           app-id: ${{ vars.AUTOMATION_APP_ID }}
           private-key: ${{ secrets.AUTOMATION_APP_KEY }}
-          owner: stable-haskell
+          owner: ${{ github.repository_owner }}
           repositories: ${{ matrix.repository }}
           
-      - run: gh repo sync stable-haskell/${{ matrix.repository }}
+      - run: gh repo sync ${{ github.repository_owner }}/${{ matrix.repository }}
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
